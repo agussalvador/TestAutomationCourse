@@ -58,6 +58,8 @@ public class JavaBasics {
 			System.out.println(task3[i]);
 		}
 	}
+
+
 }
 
 
