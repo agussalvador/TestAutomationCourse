@@ -1,8 +1,11 @@
-package com.solvd.lab1.lecture2.vehicles;
+package com.solvd.lab1.lecture2And3.vehicles;
+
+import com.solvd.lab1.lecture2And3.interfaces.IVehicleMaintenance;
+import com.solvd.lab1.lecture2And3.interfaces.IVehicleMovement;
 
 import java.util.Objects;
 
-public abstract class Vehicle implements VehicleBehaviour{
+public abstract class Vehicle implements IVehicleMovement, IVehicleMaintenance {
     private String licensePlate;
     private String brand;
     private float speed;
@@ -72,4 +75,22 @@ public abstract class Vehicle implements VehicleBehaviour{
     public int hashCode() {
         return Objects.hash(licensePlate);
     }
+
+
+    @Override
+    public void checkBrakes() {
+        System.out.println("The mechanic checked the brakes");
+    }
+
+    //Task 3
+    //Final method cannot be overridden
+    public final void finalMethod(){
+        System.out.println("This method cannot be overridden");
+    }
+
+    //Static method
+    public static void staticMethod(){
+        System.out.println("This is a static method");
+    }
+
 }

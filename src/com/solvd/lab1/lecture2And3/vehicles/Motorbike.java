@@ -1,17 +1,25 @@
-package com.solvd.lab1.lecture2.vehicles;
+package com.solvd.lab1.lecture2And3.vehicles;
 
-import java.util.Objects;
+import com.solvd.lab1.lecture2And3.interfaces.IStunts;
 
-public class Motorbike extends Vehicle{
+public class Motorbike extends Vehicle implements IStunts {
     private String bikeType;
+    //Final Attribute
+    public final static int maxSpeedOnCity = 60;
 
     public Motorbike(String licensePlate, String brand, float maxSpeed, String bikeType) {
         super(licensePlate, brand, maxSpeed);
         this.bikeType=bikeType;
     }
 
+    @Override
     public void wheelie(){
         System.out.println("The bike its doing wheelie, be careful");
+    }
+
+    @Override
+    public void jumpingRamp() {
+        System.out.println("The biker is crazy and is jumping a ramp.");
     }
 
     @Override
@@ -41,5 +49,11 @@ public class Motorbike extends Vehicle{
         return super.toString() + '\'' +
                 ", bikeType='" + bikeType + '\'';
     }
+    @Override
+    public void changeWheels(int wheels) {
+        System.out.println("the motorbike has" +wheels +" new wheels");
+    }
+
+
 
 }
