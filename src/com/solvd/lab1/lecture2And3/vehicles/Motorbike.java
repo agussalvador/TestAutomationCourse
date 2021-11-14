@@ -1,13 +1,14 @@
 package com.solvd.lab1.lecture2And3.vehicles;
 
 import com.solvd.lab1.lecture2And3.interfaces.IStunts;
+import com.solvd.lab1.lecture4.exceptions.InvalidCharacter;
+import com.solvd.lab1.lecture4.exceptions.NegativeSpeedException;
 
 public class Motorbike extends Vehicle implements IStunts {
     private String bikeType;
-    //Final Attribute
-    public final static int maxSpeedOnCity = 60;
 
-    public Motorbike(String licensePlate, String brand, float maxSpeed, String bikeType) {
+
+    public Motorbike(String licensePlate, String brand, float maxSpeed, String bikeType) throws NegativeSpeedException, InvalidCharacter {
         super(licensePlate, brand, maxSpeed);
         this.bikeType=bikeType;
     }

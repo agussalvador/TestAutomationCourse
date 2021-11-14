@@ -2,18 +2,41 @@ package com.solvd.lab1.lecture2And3.vehicles;
 
 import com.solvd.lab1.lecture2And3.interfaces.IVehicleMaintenance;
 import com.solvd.lab1.lecture2And3.interfaces.IVehicleMovement;
+import com.solvd.lab1.lecture4.exceptions.InvalidCharacter;
+import com.solvd.lab1.lecture4.exceptions.InvalidFormat;
+import com.solvd.lab1.lecture4.exceptions.InvalidLicensePlateException;
+import com.solvd.lab1.lecture4.exceptions.NegativeSpeedException;
+import com.solvd.lab1.lecture4.validationFunctions.Validation;
 
 import java.util.Objects;
 
 public abstract class Vehicle implements IVehicleMovement, IVehicleMaintenance {
+
     private String licensePlate;
     private String brand;
-    private float speed;
+    private float maxSpeed;
+    //Final Attribute
+    public final static int  MAX_SPEED_ON_CITY = 60;
 
-    public Vehicle(String licensePlate, String brand, float speed) {
-        this.licensePlate = licensePlate;
+    public Vehicle(String licensePlate, String brand, float maxSpeed) throws NegativeSpeedException, InvalidCharacter {
+
         this.brand = brand;
-        this.speed = speed;
+        //Check if the speed is greater than 0 I throw NegativeSpeedException
+        if(maxSpeed < 0)
+            throw new NegativeSpeedException();
+        else
+            this.maxSpeed = maxSpeed;
+        //Check if the license plate has invalid characters
+        if(Validation.checkInvalidCharacter(licensePlate)) {
+            try {
+                //Check if the license plate has invalid format
+                if(Validation.checkLicensePlateFormat(licensePlate))
+                    this.licensePlate = licensePlate;
+            } catch (InvalidFormat e) {
+                e.getMessage();
+            }
+        }
+
     }
 
     //Getters & Setters
@@ -33,20 +56,13 @@ public abstract class Vehicle implements IVehicleMovement, IVehicleMaintenance {
         this.brand = brand;
     }
 
-    public float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(float speed) {
-        this.speed = speed;
-    }
 
     @Override
     public String toString() {
         return
                 "LicensePlate='" + licensePlate + '\'' +
                 ", brand='" + brand + '\'' +
-                ", speed=" + speed ;
+                ", speed=" + maxSpeed ;
     }
 
     /*
@@ -92,5 +108,6 @@ public abstract class Vehicle implements IVehicleMovement, IVehicleMaintenance {
     public static void staticMethod(){
         System.out.println("This is a static method");
     }
+
 
 }

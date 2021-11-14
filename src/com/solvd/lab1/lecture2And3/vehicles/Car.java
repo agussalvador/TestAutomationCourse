@@ -1,12 +1,13 @@
 package com.solvd.lab1.lecture2And3.vehicles;
 
+import com.solvd.lab1.lecture4.exceptions.InvalidCharacter;
+import com.solvd.lab1.lecture4.exceptions.NegativeSpeedException;
+
 public class Car extends Vehicle {
 
     private String engine;
-    //Final Attribute
-    public final static int maxSpeedOnCity = 60;
 
-    public Car(String licensePlate, String brand, float maxSpeed, String engine) {
+    public Car(String licensePlate, String brand, float maxSpeed, String engine) throws NegativeSpeedException, InvalidCharacter {
         super(licensePlate, brand, maxSpeed);
         this.engine = engine;
     }
