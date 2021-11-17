@@ -13,7 +13,7 @@ public class ConsoleInputs {
     public static void main(String[] args) {
 
         writeFileOutputStream();
-        printFile(filePath);
+        //printFile(filePath);
     }
 
 
@@ -35,7 +35,7 @@ public class ConsoleInputs {
             fileOutputStream.write(byteArray);
             LOGGER.log(Level.INFO, "Message written to file successfuly!");
         }catch(Exception exception){
-            System.out.println(exception);
+            LOGGER.log(Level.INFO, exception.getMessage());
         }
     }
 
@@ -52,7 +52,7 @@ public class ConsoleInputs {
             }
             f.close();
         } catch (IOException e) {
-            e.getMessage();
+            LOGGER.log(Level.INFO, e.getMessage());
         }
     }
 }

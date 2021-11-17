@@ -25,13 +25,13 @@ public final class Runner {
             car2 = new Car("AJ987FR", "Tesla", 220, "Hybrid");
             car3 = new Car("AA123AA", "Fiat", 120, "Diesel");
         } catch (InvalidCharacter e) {
-            e.printStackTrace();
+            LOGGER1.log(Level.INFO, e.getMessage());
         }
 
         try {
             moto1 = new Motorbike("BB456BB", "Suzuki", 130, "Cross");
         } catch (InvalidCharacter e) {
-            e.printStackTrace();
+            LOGGER1.log(Level.INFO, e.getMessage());
         }
 
 
